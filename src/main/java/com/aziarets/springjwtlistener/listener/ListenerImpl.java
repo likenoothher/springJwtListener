@@ -1,21 +1,19 @@
 package com.aziarets.springjwtlistener.listener;
 
 import com.aziarets.springjwtlistener.logger.MessageLogger;
+import com.aziarets.springjwtlistener.rabbit.dto.LoggingDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ListenerImpl implements MessageListener {
+public class ListenerImpl {
 
     private final MessageLogger messageLogger;
 
-    @Override
-    @RabbitListener(queues = "${rabbit.queue-name}")
-    public void onMessage(Message message) {
+    @RabbitListener(queues = "springJwtLoggingQueue", messageConverter = "converter")
+    public void onMessage(LoggingDto message) {
         messageLogger.log(message);
     }
 }

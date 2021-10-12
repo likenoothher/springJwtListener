@@ -1,7 +1,7 @@
 package com.aziarets.springjwtlistener.logger;
 
-import org.springframework.amqp.core.Message;
+import com.aziarets.springjwtlistener.rabbit.dto.LoggingDto;
 
 public interface MessageLogger {
-    void log(Message message);
+    void log(LoggingDto message);
 }
