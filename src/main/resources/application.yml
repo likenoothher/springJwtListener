@@ -1,0 +1,10 @@
+server:
+  port: ${SPRING_JWT_LISTENER_APP_PORT}
+rabbit:
+  queue-name: ${RABBITMQ_QUEUE_NAME}
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
